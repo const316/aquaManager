@@ -47,7 +47,6 @@ public class SucursalAsserts {
     public static void assertSucursalUpdatableFieldsEquals(Sucursal expected, Sucursal actual) {
         assertThat(expected)
             .as("Verify Sucursal relevant properties")
-            .satisfies(e -> assertThat(e.getUniqueId()).as("check uniqueId").isEqualTo(actual.getUniqueId()))
             .satisfies(e -> assertThat(e.getNombre()).as("check nombre").isEqualTo(actual.getNombre()))
             .satisfies(e -> assertThat(e.getDireccion()).as("check direccion").isEqualTo(actual.getDireccion()))
             .satisfies(e -> assertThat(e.getTelefono()).as("check telefono").isEqualTo(actual.getTelefono()));

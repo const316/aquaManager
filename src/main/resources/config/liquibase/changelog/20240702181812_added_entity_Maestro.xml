@@ -14,9 +14,6 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="unique_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <column name="nombre" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -27,6 +24,9 @@
                 <constraints nullable="true" />
             </column>
             <column name="activo" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="sucursal_id" type="bigint">
                 <constraints nullable="true" />
             </column>
             <column name="sucursal_id" type="bigint">
@@ -53,11 +53,11 @@
                   tableName="maestro"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="unique_id" type="numeric"/>
             <column name="nombre" type="string"/>
             <column name="apellidos" type="string"/>
             <column name="contacto" type="string"/>
             <column name="activo" type="numeric"/>
+            <column name="sucursal_id" type="numeric"/>
             <!-- jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here -->
         </loadData>
     </changeSet>

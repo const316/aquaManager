@@ -23,9 +23,6 @@ public class Maestro implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "unique_id")
-    private Long uniqueId;
-
     @Column(name = "nombre")
     private String nombre;
 
@@ -37,6 +34,9 @@ public class Maestro implements Serializable {
 
     @Column(name = "activo")
     private Integer activo;
+
+    @Column(name = "sucursal_id")
+    private Long sucursalId;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "alumnos", "maestros" }, allowSetters = true)
@@ -55,19 +55,6 @@ public class Maestro implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUniqueId() {
-        return this.uniqueId;
-    }
-
-    public Maestro uniqueId(Long uniqueId) {
-        this.setUniqueId(uniqueId);
-        return this;
-    }
-
-    public void setUniqueId(Long uniqueId) {
-        this.uniqueId = uniqueId;
     }
 
     public String getNombre() {
@@ -122,6 +109,19 @@ public class Maestro implements Serializable {
         this.activo = activo;
     }
 
+    public Long getSucursalId() {
+        return this.sucursalId;
+    }
+
+    public Maestro sucursalId(Long sucursalId) {
+        this.setSucursalId(sucursalId);
+        return this;
+    }
+
+    public void setSucursalId(Long sucursalId) {
+        this.sucursalId = sucursalId;
+    }
+
     public Sucursal getSucursal() {
         return this.sucursal;
     }
@@ -159,11 +159,11 @@ public class Maestro implements Serializable {
     public String toString() {
         return "Maestro{" +
             "id=" + getId() +
-            ", uniqueId=" + getUniqueId() +
             ", nombre='" + getNombre() + "'" +
             ", apellidos='" + getApellidos() + "'" +
             ", contacto='" + getContacto() + "'" +
             ", activo=" + getActivo() +
+            ", sucursalId=" + getSucursalId() +
             "}";
     }
 }

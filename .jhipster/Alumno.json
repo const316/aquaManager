@@ -5,10 +5,6 @@
   "applications": ["aquaManager"],
   "fields": [
     {
-      "fieldName": "uniqueId",
-      "fieldType": "Long"
-    },
-    {
       "fieldName": "nombre",
       "fieldType": "String"
     },
@@ -51,6 +47,10 @@
     {
       "fieldName": "inscrito",
       "fieldType": "Integer"
+    },
+    {
+      "fieldName": "sucursalId",
+      "fieldType": "Long"
     }
   ],
   "name": "Alumno",

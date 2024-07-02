@@ -18,7 +18,6 @@
         "title": "Alumno"
       },
       "id": "ID",
-      "uniqueId": "Unique Id",
       "nombre": "Nombre",
       "apellidos": "Apellidos",
       "fechaNacimiento": "Fecha Nacimiento",
@@ -30,6 +29,7 @@
       "email": "Email",
       "activo": "Activo",
       "inscrito": "Inscrito",
+      "sucursalId": "Sucursal Id",
       "sucursal": "Sucursal"
     }
   }

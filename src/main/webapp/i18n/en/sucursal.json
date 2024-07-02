@@ -18,7 +18,6 @@
         "title": "Sucursal"
       },
       "id": "ID",
-      "uniqueId": "Unique Id",
       "nombre": "Nombre",
       "direccion": "Direccion",
       "telefono": "Telefono",

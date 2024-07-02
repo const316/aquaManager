@@ -20,7 +20,6 @@ describe('Sucursal Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            uniqueId: expect.any(Object),
             nombre: expect.any(Object),
             direccion: expect.any(Object),
             telefono: expect.any(Object),
@@ -34,7 +33,6 @@ describe('Sucursal Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            uniqueId: expect.any(Object),
             nombre: expect.any(Object),
             direccion: expect.any(Object),
             telefono: expect.any(Object),

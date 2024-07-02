@@ -1,6 +1,5 @@
 export interface ISucursal {
   id: number;
-  uniqueId?: number | null;
   nombre?: string | null;
   direccion?: string | null;
   telefono?: string | null;

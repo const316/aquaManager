@@ -18,11 +18,11 @@
         "title": "Maestro"
       },
       "id": "ID",
-      "uniqueId": "Unique Id",
       "nombre": "Nombre",
       "apellidos": "Apellidos",
       "contacto": "Contacto",
       "activo": "Activo",
+      "sucursalId": "Sucursal Id",
       "sucursal": "Sucursal"
     }
   }

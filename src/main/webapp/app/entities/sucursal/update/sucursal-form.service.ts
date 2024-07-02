@@ -18,7 +18,6 @@ type SucursalFormDefaults = Pick<NewSucursal, 'id'>;
 
 type SucursalFormGroupContent = {
   id: FormControl<ISucursal['id'] | NewSucursal['id']>;
-  uniqueId: FormControl<ISucursal['uniqueId']>;
   nombre: FormControl<ISucursal['nombre']>;
   direccion: FormControl<ISucursal['direccion']>;
   telefono: FormControl<ISucursal['telefono']>;
@@ -41,7 +40,6 @@ export class SucursalFormService {
           validators: [Validators.required],
         },
       ),
-      uniqueId: new FormControl(sucursalRawValue.uniqueId),
       nombre: new FormControl(sucursalRawValue.nombre),
       direccion: new FormControl(sucursalRawValue.direccion),
       telefono: new FormControl(sucursalRawValue.telefono),

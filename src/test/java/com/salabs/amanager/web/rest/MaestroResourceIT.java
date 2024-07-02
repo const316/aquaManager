@@ -32,9 +32,6 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class MaestroResourceIT {
 
-    private static final Long DEFAULT_UNIQUE_ID = 1L;
-    private static final Long UPDATED_UNIQUE_ID = 2L;
-
     private static final String DEFAULT_NOMBRE = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE = "BBBBBBBBBB";
 
@@ -46,6 +43,9 @@ class MaestroResourceIT {
 
     private static final Integer DEFAULT_ACTIVO = 1;
     private static final Integer UPDATED_ACTIVO = 2;
+
+    private static final Long DEFAULT_SUCURSAL_ID = 1L;
+    private static final Long UPDATED_SUCURSAL_ID = 2L;
 
     private static final String ENTITY_API_URL = "/api/maestros";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
@@ -77,11 +77,11 @@ class MaestroResourceIT {
      */
     public static Maestro createEntity(EntityManager em) {
         Maestro maestro = new Maestro()
-            .uniqueId(DEFAULT_UNIQUE_ID)
             .nombre(DEFAULT_NOMBRE)
             .apellidos(DEFAULT_APELLIDOS)
             .contacto(DEFAULT_CONTACTO)
-            .activo(DEFAULT_ACTIVO);
+            .activo(DEFAULT_ACTIVO)
+            .sucursalId(DEFAULT_SUCURSAL_ID);
         return maestro;
     }
 
@@ -93,11 +93,11 @@ class MaestroResourceIT {
      */
     public static Maestro createUpdatedEntity(EntityManager em) {
         Maestro maestro = new Maestro()
-            .uniqueId(UPDATED_UNIQUE_ID)
             .nombre(UPDATED_NOMBRE)
             .apellidos(UPDATED_APELLIDOS)
             .contacto(UPDATED_CONTACTO)
-            .activo(UPDATED_ACTIVO);
+            .activo(UPDATED_ACTIVO)
+            .sucursalId(UPDATED_SUCURSAL_ID);
         return maestro;
     }
 
@@ -165,11 +165,11 @@ class MaestroResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(maestro.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uniqueId").value(hasItem(DEFAULT_UNIQUE_ID.intValue())))
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE)))
             .andExpect(jsonPath("$.[*].apellidos").value(hasItem(DEFAULT_APELLIDOS)))
             .andExpect(jsonPath("$.[*].contacto").value(hasItem(DEFAULT_CONTACTO)))
-            .andExpect(jsonPath("$.[*].activo").value(hasItem(DEFAULT_ACTIVO)));
+            .andExpect(jsonPath("$.[*].activo").value(hasItem(DEFAULT_ACTIVO)))
+            .andExpect(jsonPath("$.[*].sucursalId").value(hasItem(DEFAULT_SUCURSAL_ID.intValue())));
     }
 
     @Test
@@ -184,11 +184,11 @@ class MaestroResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(maestro.getId().intValue()))
-            .andExpect(jsonPath("$.uniqueId").value(DEFAULT_UNIQUE_ID.intValue()))
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE))
             .andExpect(jsonPath("$.apellidos").value(DEFAULT_APELLIDOS))
             .andExpect(jsonPath("$.contacto").value(DEFAULT_CONTACTO))
-            .andExpect(jsonPath("$.activo").value(DEFAULT_ACTIVO));
+            .andExpect(jsonPath("$.activo").value(DEFAULT_ACTIVO))
+            .andExpect(jsonPath("$.sucursalId").value(DEFAULT_SUCURSAL_ID.intValue()));
     }
 
     @Test
@@ -211,11 +211,11 @@ class MaestroResourceIT {
         // Disconnect from session so that the updates on updatedMaestro are not directly saved in db
         em.detach(updatedMaestro);
         updatedMaestro
-            .uniqueId(UPDATED_UNIQUE_ID)
             .nombre(UPDATED_NOMBRE)
             .apellidos(UPDATED_APELLIDOS)
             .contacto(UPDATED_CONTACTO)
-            .activo(UPDATED_ACTIVO);
+            .activo(UPDATED_ACTIVO)
+            .sucursalId(UPDATED_SUCURSAL_ID);
 
         restMaestroMockMvc
             .perform(
@@ -291,7 +291,7 @@ class MaestroResourceIT {
         Maestro partialUpdatedMaestro = new Maestro();
         partialUpdatedMaestro.setId(maestro.getId());
 
-        partialUpdatedMaestro.uniqueId(UPDATED_UNIQUE_ID);
+        partialUpdatedMaestro.nombre(UPDATED_NOMBRE);
 
         restMaestroMockMvc
             .perform(
@@ -320,11 +320,11 @@ class MaestroResourceIT {
         partialUpdatedMaestro.setId(maestro.getId());
 
         partialUpdatedMaestro
-            .uniqueId(UPDATED_UNIQUE_ID)
             .nombre(UPDATED_NOMBRE)
             .apellidos(UPDATED_APELLIDOS)
             .contacto(UPDATED_CONTACTO)
-            .activo(UPDATED_ACTIVO);
+            .activo(UPDATED_ACTIVO)
+            .sucursalId(UPDATED_SUCURSAL_ID);
 
         restMaestroMockMvc
             .perform(

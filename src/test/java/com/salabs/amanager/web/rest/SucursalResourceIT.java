@@ -32,9 +32,6 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class SucursalResourceIT {
 
-    private static final Long DEFAULT_UNIQUE_ID = 1L;
-    private static final Long UPDATED_UNIQUE_ID = 2L;
-
     private static final String DEFAULT_NOMBRE = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE = "BBBBBBBBBB";
 
@@ -73,11 +70,7 @@ class SucursalResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Sucursal createEntity(EntityManager em) {
-        Sucursal sucursal = new Sucursal()
-            .uniqueId(DEFAULT_UNIQUE_ID)
-            .nombre(DEFAULT_NOMBRE)
-            .direccion(DEFAULT_DIRECCION)
-            .telefono(DEFAULT_TELEFONO);
+        Sucursal sucursal = new Sucursal().nombre(DEFAULT_NOMBRE).direccion(DEFAULT_DIRECCION).telefono(DEFAULT_TELEFONO);
         return sucursal;
     }
 
@@ -88,11 +81,7 @@ class SucursalResourceIT {
      * if they test an entity which requires the current entity.
      */
     public static Sucursal createUpdatedEntity(EntityManager em) {
-        Sucursal sucursal = new Sucursal()
-            .uniqueId(UPDATED_UNIQUE_ID)
-            .nombre(UPDATED_NOMBRE)
-            .direccion(UPDATED_DIRECCION)
-            .telefono(UPDATED_TELEFONO);
+        Sucursal sucursal = new Sucursal().nombre(UPDATED_NOMBRE).direccion(UPDATED_DIRECCION).telefono(UPDATED_TELEFONO);
         return sucursal;
     }
 
@@ -160,7 +149,6 @@ class SucursalResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(sucursal.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uniqueId").value(hasItem(DEFAULT_UNIQUE_ID.intValue())))
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE)))
             .andExpect(jsonPath("$.[*].direccion").value(hasItem(DEFAULT_DIRECCION)))
             .andExpect(jsonPath("$.[*].telefono").value(hasItem(DEFAULT_TELEFONO)));
@@ -178,7 +166,6 @@ class SucursalResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(sucursal.getId().intValue()))
-            .andExpect(jsonPath("$.uniqueId").value(DEFAULT_UNIQUE_ID.intValue()))
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE))
             .andExpect(jsonPath("$.direccion").value(DEFAULT_DIRECCION))
             .andExpect(jsonPath("$.telefono").value(DEFAULT_TELEFONO));
@@ -203,7 +190,7 @@ class SucursalResourceIT {
         Sucursal updatedSucursal = sucursalRepository.findById(sucursal.getId()).orElseThrow();
         // Disconnect from session so that the updates on updatedSucursal are not directly saved in db
         em.detach(updatedSucursal);
-        updatedSucursal.uniqueId(UPDATED_UNIQUE_ID).nombre(UPDATED_NOMBRE).direccion(UPDATED_DIRECCION).telefono(UPDATED_TELEFONO);
+        updatedSucursal.nombre(UPDATED_NOMBRE).direccion(UPDATED_DIRECCION).telefono(UPDATED_TELEFONO);
 
         restSucursalMockMvc
             .perform(
@@ -281,7 +268,7 @@ class SucursalResourceIT {
         Sucursal partialUpdatedSucursal = new Sucursal();
         partialUpdatedSucursal.setId(sucursal.getId());
 
-        partialUpdatedSucursal.nombre(UPDATED_NOMBRE).direccion(UPDATED_DIRECCION).telefono(UPDATED_TELEFONO);
+        partialUpdatedSucursal.direccion(UPDATED_DIRECCION).telefono(UPDATED_TELEFONO);
 
         restSucursalMockMvc
             .perform(
@@ -309,7 +296,7 @@ class SucursalResourceIT {
         Sucursal partialUpdatedSucursal = new Sucursal();
         partialUpdatedSucursal.setId(sucursal.getId());
 
-        partialUpdatedSucursal.uniqueId(UPDATED_UNIQUE_ID).nombre(UPDATED_NOMBRE).direccion(UPDATED_DIRECCION).telefono(UPDATED_TELEFONO);
+        partialUpdatedSucursal.nombre(UPDATED_NOMBRE).direccion(UPDATED_DIRECCION).telefono(UPDATED_TELEFONO);
 
         restSucursalMockMvc
             .perform(

@@ -1,22 +1,19 @@
 import { ISucursal, NewSucursal } from './sucursal.model';
 
 export const sampleWithRequiredData: ISucursal = {
-  id: 28000,
+  id: 6923,
 };
 
 export const sampleWithPartialData: ISucursal = {
-  id: 5238,
-  nombre: 'mine',
-  direccion: 'scooter and',
-  telefono: 'recapitulation',
+  id: 9139,
+  telefono: 'phew',
 };
 
 export const sampleWithFullData: ISucursal = {
-  id: 30395,
-  uniqueId: 368,
-  nombre: 'pish butterfly following',
-  direccion: 'wherever without',
-  telefono: 'aside',
+  id: 29054,
+  nombre: 'drat agreeable',
+  direccion: 'repossess',
+  telefono: 'gah yuck reluctantly',
 };
 
 export const sampleWithNewData: NewSucursal = {

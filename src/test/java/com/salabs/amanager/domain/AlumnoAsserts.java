@@ -47,7 +47,6 @@ public class AlumnoAsserts {
     public static void assertAlumnoUpdatableFieldsEquals(Alumno expected, Alumno actual) {
         assertThat(expected)
             .as("Verify Alumno relevant properties")
-            .satisfies(e -> assertThat(e.getUniqueId()).as("check uniqueId").isEqualTo(actual.getUniqueId()))
             .satisfies(e -> assertThat(e.getNombre()).as("check nombre").isEqualTo(actual.getNombre()))
             .satisfies(e -> assertThat(e.getApellidos()).as("check apellidos").isEqualTo(actual.getApellidos()))
             .satisfies(e -> assertThat(e.getFechaNacimiento()).as("check fechaNacimiento").isEqualTo(actual.getFechaNacimiento()))
@@ -58,7 +57,8 @@ public class AlumnoAsserts {
             .satisfies(e -> assertThat(e.getContacto2()).as("check contacto2").isEqualTo(actual.getContacto2()))
             .satisfies(e -> assertThat(e.getEmail()).as("check email").isEqualTo(actual.getEmail()))
             .satisfies(e -> assertThat(e.getActivo()).as("check activo").isEqualTo(actual.getActivo()))
-            .satisfies(e -> assertThat(e.getInscrito()).as("check inscrito").isEqualTo(actual.getInscrito()));
+            .satisfies(e -> assertThat(e.getInscrito()).as("check inscrito").isEqualTo(actual.getInscrito()))
+            .satisfies(e -> assertThat(e.getSucursalId()).as("check sucursalId").isEqualTo(actual.getSucursalId()));
     }
 
     /**

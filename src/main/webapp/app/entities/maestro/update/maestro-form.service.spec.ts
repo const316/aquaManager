@@ -20,11 +20,11 @@ describe('Maestro Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            uniqueId: expect.any(Object),
             nombre: expect.any(Object),
             apellidos: expect.any(Object),
             contacto: expect.any(Object),
             activo: expect.any(Object),
+            sucursalId: expect.any(Object),
             sucursal: expect.any(Object),
           }),
         );
@@ -36,11 +36,11 @@ describe('Maestro Form Service', () => {
         expect(formGroup.controls).toEqual(
           expect.objectContaining({
             id: expect.any(Object),
-            uniqueId: expect.any(Object),
             nombre: expect.any(Object),
             apellidos: expect.any(Object),
             contacto: expect.any(Object),
             activo: expect.any(Object),
+            sucursalId: expect.any(Object),
             sucursal: expect.any(Object),
           }),
         );

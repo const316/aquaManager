@@ -49,10 +49,10 @@ describe('Alumno Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Sucursal query and add missing value', () => {
       const alumno: IAlumno = { id: 456 };
-      const sucursal: ISucursal = { id: 13849 };
+      const sucursal: ISucursal = { id: 777 };
       alumno.sucursal = sucursal;
 
-      const sucursalCollection: ISucursal[] = [{ id: 28015 }];
+      const sucursalCollection: ISucursal[] = [{ id: 769 }];
       jest.spyOn(sucursalService, 'query').mockReturnValue(of(new HttpResponse({ body: sucursalCollection })));
       const additionalSucursals = [sucursal];
       const expectedCollection: ISucursal[] = [...additionalSucursals, ...sucursalCollection];
@@ -71,7 +71,7 @@ describe('Alumno Management Update Component', () => {
 
     it('Should update editForm', () => {
       const alumno: IAlumno = { id: 456 };
-      const sucursal: ISucursal = { id: 27327 };
+      const sucursal: ISucursal = { id: 14847 };
       alumno.sucursal = sucursal;
 
       activatedRoute.data = of({ alumno });

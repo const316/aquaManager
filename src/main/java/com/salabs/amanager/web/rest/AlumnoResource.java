@@ -119,9 +119,6 @@ public class AlumnoResource {
         Optional<Alumno> result = alumnoRepository
             .findById(alumno.getId())
             .map(existingAlumno -> {
-                if (alumno.getUniqueId() != null) {
-                    existingAlumno.setUniqueId(alumno.getUniqueId());
-                }
                 if (alumno.getNombre() != null) {
                     existingAlumno.setNombre(alumno.getNombre());
                 }
@@ -154,6 +151,9 @@ public class AlumnoResource {
                 }
                 if (alumno.getInscrito() != null) {
                     existingAlumno.setInscrito(alumno.getInscrito());
+                }
+                if (alumno.getSucursalId() != null) {
+                    existingAlumno.setSucursalId(alumno.getSucursalId());
                 }
 
                 return existingAlumno;

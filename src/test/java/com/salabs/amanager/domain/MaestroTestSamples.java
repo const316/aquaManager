@@ -12,20 +12,20 @@ public class MaestroTestSamples {
     private static final AtomicInteger intCount = new AtomicInteger(random.nextInt() + (2 * Short.MAX_VALUE));
 
     public static Maestro getMaestroSample1() {
-        return new Maestro().id(1L).uniqueId(1L).nombre("nombre1").apellidos("apellidos1").contacto("contacto1").activo(1);
+        return new Maestro().id(1L).nombre("nombre1").apellidos("apellidos1").contacto("contacto1").activo(1).sucursalId(1L);
     }
 
     public static Maestro getMaestroSample2() {
-        return new Maestro().id(2L).uniqueId(2L).nombre("nombre2").apellidos("apellidos2").contacto("contacto2").activo(2);
+        return new Maestro().id(2L).nombre("nombre2").apellidos("apellidos2").contacto("contacto2").activo(2).sucursalId(2L);
     }
 
     public static Maestro getMaestroRandomSampleGenerator() {
         return new Maestro()
             .id(longCount.incrementAndGet())
-            .uniqueId(longCount.incrementAndGet())
             .nombre(UUID.randomUUID().toString())
             .apellidos(UUID.randomUUID().toString())
             .contacto(UUID.randomUUID().toString())
-            .activo(intCount.incrementAndGet());
+            .activo(intCount.incrementAndGet())
+            .sucursalId(longCount.incrementAndGet());
     }
 }

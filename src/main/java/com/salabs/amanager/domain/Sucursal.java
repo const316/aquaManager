@@ -25,9 +25,6 @@ public class Sucursal implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "unique_id")
-    private Long uniqueId;
-
     @Column(name = "nombre")
     private String nombre;
 
@@ -60,19 +57,6 @@ public class Sucursal implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUniqueId() {
-        return this.uniqueId;
-    }
-
-    public Sucursal uniqueId(Long uniqueId) {
-        this.setUniqueId(uniqueId);
-        return this;
-    }
-
-    public void setUniqueId(Long uniqueId) {
-        this.uniqueId = uniqueId;
     }
 
     public String getNombre() {
@@ -200,7 +184,6 @@ public class Sucursal implements Serializable {
     public String toString() {
         return "Sucursal{" +
             "id=" + getId() +
-            ", uniqueId=" + getUniqueId() +
             ", nombre='" + getNombre() + "'" +
             ", direccion='" + getDireccion() + "'" +
             ", telefono='" + getTelefono() + "'" +

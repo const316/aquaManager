@@ -6,16 +6,16 @@ export const sampleWithRequiredData: IMaestro = {
 
 export const sampleWithPartialData: IMaestro = {
   id: 7177,
-  uniqueId: 17073,
+  nombre: 'in ah',
 };
 
 export const sampleWithFullData: IMaestro = {
-  id: 20906,
-  uniqueId: 17070,
-  nombre: 'itch moisturize',
-  apellidos: 'because far hound',
-  contacto: 'rightfully',
-  activo: 3621,
+  id: 2129,
+  nombre: 'emancipate',
+  apellidos: 'frank shuck rim',
+  contacto: 'fizz',
+  activo: 8178,
+  sucursalId: 17320,
 };
 
 export const sampleWithNewData: NewMaestro = {

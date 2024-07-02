@@ -121,9 +121,6 @@ public class SucursalResource {
         Optional<Sucursal> result = sucursalRepository
             .findById(sucursal.getId())
             .map(existingSucursal -> {
-                if (sucursal.getUniqueId() != null) {
-                    existingSucursal.setUniqueId(sucursal.getUniqueId());
-                }
                 if (sucursal.getNombre() != null) {
                     existingSucursal.setNombre(sucursal.getNombre());
                 }

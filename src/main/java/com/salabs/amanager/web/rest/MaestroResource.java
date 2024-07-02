@@ -119,9 +119,6 @@ public class MaestroResource {
         Optional<Maestro> result = maestroRepository
             .findById(maestro.getId())
             .map(existingMaestro -> {
-                if (maestro.getUniqueId() != null) {
-                    existingMaestro.setUniqueId(maestro.getUniqueId());
-                }
                 if (maestro.getNombre() != null) {
                     existingMaestro.setNombre(maestro.getNombre());
                 }
@@ -133,6 +130,9 @@ public class MaestroResource {
                 }
                 if (maestro.getActivo() != null) {
                     existingMaestro.setActivo(maestro.getActivo());
+                }
+                if (maestro.getSucursalId() != null) {
+                    existingMaestro.setSucursalId(maestro.getSucursalId());
                 }
 
                 return existingMaestro;

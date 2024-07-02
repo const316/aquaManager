@@ -18,7 +18,6 @@ type AlumnoFormDefaults = Pick<NewAlumno, 'id'>;
 
 type AlumnoFormGroupContent = {
   id: FormControl<IAlumno['id'] | NewAlumno['id']>;
-  uniqueId: FormControl<IAlumno['uniqueId']>;
   nombre: FormControl<IAlumno['nombre']>;
   apellidos: FormControl<IAlumno['apellidos']>;
   fechaNacimiento: FormControl<IAlumno['fechaNacimiento']>;
@@ -30,6 +29,7 @@ type AlumnoFormGroupContent = {
   email: FormControl<IAlumno['email']>;
   activo: FormControl<IAlumno['activo']>;
   inscrito: FormControl<IAlumno['inscrito']>;
+  sucursalId: FormControl<IAlumno['sucursalId']>;
   sucursal: FormControl<IAlumno['sucursal']>;
 };
 
@@ -50,7 +50,6 @@ export class AlumnoFormService {
           validators: [Validators.required],
         },
       ),
-      uniqueId: new FormControl(alumnoRawValue.uniqueId),
       nombre: new FormControl(alumnoRawValue.nombre),
       apellidos: new FormControl(alumnoRawValue.apellidos),
       fechaNacimiento: new FormControl(alumnoRawValue.fechaNacimiento),
@@ -62,6 +61,7 @@ export class AlumnoFormService {
       email: new FormControl(alumnoRawValue.email),
       activo: new FormControl(alumnoRawValue.activo),
       inscrito: new FormControl(alumnoRawValue.inscrito),
+      sucursalId: new FormControl(alumnoRawValue.sucursalId),
       sucursal: new FormControl(alumnoRawValue.sucursal),
     });
   }

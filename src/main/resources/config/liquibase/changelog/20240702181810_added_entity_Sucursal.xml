@@ -14,9 +14,6 @@
             <column name="id" type="bigint">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="unique_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
             <column name="nombre" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -47,7 +44,6 @@
                   tableName="sucursal"
                   usePreparedStatements="true">
             <column name="id" type="numeric"/>
-            <column name="unique_id" type="numeric"/>
             <column name="nombre" type="string"/>
             <column name="direccion" type="string"/>
             <column name="telefono" type="string"/>

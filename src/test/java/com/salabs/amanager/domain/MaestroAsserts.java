@@ -47,11 +47,11 @@ public class MaestroAsserts {
     public static void assertMaestroUpdatableFieldsEquals(Maestro expected, Maestro actual) {
         assertThat(expected)
             .as("Verify Maestro relevant properties")
-            .satisfies(e -> assertThat(e.getUniqueId()).as("check uniqueId").isEqualTo(actual.getUniqueId()))
             .satisfies(e -> assertThat(e.getNombre()).as("check nombre").isEqualTo(actual.getNombre()))
             .satisfies(e -> assertThat(e.getApellidos()).as("check apellidos").isEqualTo(actual.getApellidos()))
             .satisfies(e -> assertThat(e.getContacto()).as("check contacto").isEqualTo(actual.getContacto()))
-            .satisfies(e -> assertThat(e.getActivo()).as("check activo").isEqualTo(actual.getActivo()));
+            .satisfies(e -> assertThat(e.getActivo()).as("check activo").isEqualTo(actual.getActivo()))
+            .satisfies(e -> assertThat(e.getSucursalId()).as("check sucursalId").isEqualTo(actual.getSucursalId()));
     }
 
     /**

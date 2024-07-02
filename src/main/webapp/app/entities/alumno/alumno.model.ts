@@ -3,7 +3,6 @@ import { ISucursal } from 'app/entities/sucursal/sucursal.model';
 
 export interface IAlumno {
   id: number;
-  uniqueId?: number | null;
   nombre?: string | null;
   apellidos?: string | null;
   fechaNacimiento?: dayjs.Dayjs | null;
@@ -15,6 +14,7 @@ export interface IAlumno {
   email?: string | null;
   activo?: number | null;
   inscrito?: number | null;
+  sucursalId?: number | null;
   sucursal?: ISucursal | null;
 }
 

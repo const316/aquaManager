@@ -5,10 +5,6 @@
   "applications": ["aquaManager"],
   "fields": [
     {
-      "fieldName": "uniqueId",
-      "fieldType": "Long"
-    },
-    {
       "fieldName": "nombre",
       "fieldType": "String"
     },

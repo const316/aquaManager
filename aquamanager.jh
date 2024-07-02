@@ -12,14 +12,12 @@ application {
 }
 
 entity Sucursal{
-uniqueId Long
 nombre String
 direccion String
 telefono String
 }
 
 entity Alumno {
-uniqueId Long
 nombre String 
 apellidos String
 fechaNacimiento LocalDate
@@ -31,15 +29,15 @@ contacto2 String
 email String
 activo Integer
 inscrito Integer
-
+sucursalId Long
 }
 
 entity Maestro {
-uniqueId Long
 nombre String
 apellidos String
 contacto String
 activo Integer
+sucursalId Long
 }
 
 relationship OneToMany {

@@ -14,7 +14,6 @@ public class AlumnoTestSamples {
     public static Alumno getAlumnoSample1() {
         return new Alumno()
             .id(1L)
-            .uniqueId(1L)
             .nombre("nombre1")
             .apellidos("apellidos1")
             .direccion("direccion1")
@@ -24,13 +23,13 @@ public class AlumnoTestSamples {
             .contacto2("contacto21")
             .email("email1")
             .activo(1)
-            .inscrito(1);
+            .inscrito(1)
+            .sucursalId(1L);
     }
 
     public static Alumno getAlumnoSample2() {
         return new Alumno()
             .id(2L)
-            .uniqueId(2L)
             .nombre("nombre2")
             .apellidos("apellidos2")
             .direccion("direccion2")
@@ -40,13 +39,13 @@ public class AlumnoTestSamples {
             .contacto2("contacto22")
             .email("email2")
             .activo(2)
-            .inscrito(2);
+            .inscrito(2)
+            .sucursalId(2L);
     }
 
     public static Alumno getAlumnoRandomSampleGenerator() {
         return new Alumno()
             .id(longCount.incrementAndGet())
-            .uniqueId(longCount.incrementAndGet())
             .nombre(UUID.randomUUID().toString())
             .apellidos(UUID.randomUUID().toString())
             .direccion(UUID.randomUUID().toString())
@@ -56,6 +55,7 @@ public class AlumnoTestSamples {
             .contacto2(UUID.randomUUID().toString())
             .email(UUID.randomUUID().toString())
             .activo(intCount.incrementAndGet())
-            .inscrito(intCount.incrementAndGet());
+            .inscrito(intCount.incrementAndGet())
+            .sucursalId(longCount.incrementAndGet());
     }
 }

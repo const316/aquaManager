@@ -49,10 +49,10 @@ describe('Maestro Management Update Component', () => {
   describe('ngOnInit', () => {
     it('Should call Sucursal query and add missing value', () => {
       const maestro: IMaestro = { id: 456 };
-      const sucursal: ISucursal = { id: 80 };
+      const sucursal: ISucursal = { id: 19824 };
       maestro.sucursal = sucursal;
 
-      const sucursalCollection: ISucursal[] = [{ id: 21465 }];
+      const sucursalCollection: ISucursal[] = [{ id: 7113 }];
       jest.spyOn(sucursalService, 'query').mockReturnValue(of(new HttpResponse({ body: sucursalCollection })));
       const additionalSucursals = [sucursal];
       const expectedCollection: ISucursal[] = [...additionalSucursals, ...sucursalCollection];
@@ -71,7 +71,7 @@ describe('Maestro Management Update Component', () => {
 
     it('Should update editForm', () => {
       const maestro: IMaestro = { id: 456 };
-      const sucursal: ISucursal = { id: 18345 };
+      const sucursal: ISucursal = { id: 4826 };
       maestro.sucursal = sucursal;
 
       activatedRoute.data = of({ maestro });

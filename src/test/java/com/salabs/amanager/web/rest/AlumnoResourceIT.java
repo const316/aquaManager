@@ -34,9 +34,6 @@ import org.springframework.transaction.annotation.Transactional;
 @WithMockUser
 class AlumnoResourceIT {
 
-    private static final Long DEFAULT_UNIQUE_ID = 1L;
-    private static final Long UPDATED_UNIQUE_ID = 2L;
-
     private static final String DEFAULT_NOMBRE = "AAAAAAAAAA";
     private static final String UPDATED_NOMBRE = "BBBBBBBBBB";
 
@@ -70,6 +67,9 @@ class AlumnoResourceIT {
     private static final Integer DEFAULT_INSCRITO = 1;
     private static final Integer UPDATED_INSCRITO = 2;
 
+    private static final Long DEFAULT_SUCURSAL_ID = 1L;
+    private static final Long UPDATED_SUCURSAL_ID = 2L;
+
     private static final String ENTITY_API_URL = "/api/alumnos";
     private static final String ENTITY_API_URL_ID = ENTITY_API_URL + "/{id}";
 
@@ -100,7 +100,6 @@ class AlumnoResourceIT {
      */
     public static Alumno createEntity(EntityManager em) {
         Alumno alumno = new Alumno()
-            .uniqueId(DEFAULT_UNIQUE_ID)
             .nombre(DEFAULT_NOMBRE)
             .apellidos(DEFAULT_APELLIDOS)
             .fechaNacimiento(DEFAULT_FECHA_NACIMIENTO)
@@ -111,7 +110,8 @@ class AlumnoResourceIT {
             .contacto2(DEFAULT_CONTACTO_2)
             .email(DEFAULT_EMAIL)
             .activo(DEFAULT_ACTIVO)
-            .inscrito(DEFAULT_INSCRITO);
+            .inscrito(DEFAULT_INSCRITO)
+            .sucursalId(DEFAULT_SUCURSAL_ID);
         return alumno;
     }
 
@@ -123,7 +123,6 @@ class AlumnoResourceIT {
      */
     public static Alumno createUpdatedEntity(EntityManager em) {
         Alumno alumno = new Alumno()
-            .uniqueId(UPDATED_UNIQUE_ID)
             .nombre(UPDATED_NOMBRE)
             .apellidos(UPDATED_APELLIDOS)
             .fechaNacimiento(UPDATED_FECHA_NACIMIENTO)
@@ -134,7 +133,8 @@ class AlumnoResourceIT {
             .contacto2(UPDATED_CONTACTO_2)
             .email(UPDATED_EMAIL)
             .activo(UPDATED_ACTIVO)
-            .inscrito(UPDATED_INSCRITO);
+            .inscrito(UPDATED_INSCRITO)
+            .sucursalId(UPDATED_SUCURSAL_ID);
         return alumno;
     }
 
@@ -202,7 +202,6 @@ class AlumnoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(alumno.getId().intValue())))
-            .andExpect(jsonPath("$.[*].uniqueId").value(hasItem(DEFAULT_UNIQUE_ID.intValue())))
             .andExpect(jsonPath("$.[*].nombre").value(hasItem(DEFAULT_NOMBRE)))
             .andExpect(jsonPath("$.[*].apellidos").value(hasItem(DEFAULT_APELLIDOS)))
             .andExpect(jsonPath("$.[*].fechaNacimiento").value(hasItem(DEFAULT_FECHA_NACIMIENTO.toString())))
@@ -213,7 +212,8 @@ class AlumnoResourceIT {
             .andExpect(jsonPath("$.[*].contacto2").value(hasItem(DEFAULT_CONTACTO_2)))
             .andExpect(jsonPath("$.[*].email").value(hasItem(DEFAULT_EMAIL)))
             .andExpect(jsonPath("$.[*].activo").value(hasItem(DEFAULT_ACTIVO)))
-            .andExpect(jsonPath("$.[*].inscrito").value(hasItem(DEFAULT_INSCRITO)));
+            .andExpect(jsonPath("$.[*].inscrito").value(hasItem(DEFAULT_INSCRITO)))
+            .andExpect(jsonPath("$.[*].sucursalId").value(hasItem(DEFAULT_SUCURSAL_ID.intValue())));
     }
 
     @Test
@@ -228,7 +228,6 @@ class AlumnoResourceIT {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_VALUE))
             .andExpect(jsonPath("$.id").value(alumno.getId().intValue()))
-            .andExpect(jsonPath("$.uniqueId").value(DEFAULT_UNIQUE_ID.intValue()))
             .andExpect(jsonPath("$.nombre").value(DEFAULT_NOMBRE))
             .andExpect(jsonPath("$.apellidos").value(DEFAULT_APELLIDOS))
             .andExpect(jsonPath("$.fechaNacimiento").value(DEFAULT_FECHA_NACIMIENTO.toString()))
@@ -239,7 +238,8 @@ class AlumnoResourceIT {
             .andExpect(jsonPath("$.contacto2").value(DEFAULT_CONTACTO_2))
             .andExpect(jsonPath("$.email").value(DEFAULT_EMAIL))
             .andExpect(jsonPath("$.activo").value(DEFAULT_ACTIVO))
-            .andExpect(jsonPath("$.inscrito").value(DEFAULT_INSCRITO));
+            .andExpect(jsonPath("$.inscrito").value(DEFAULT_INSCRITO))
+            .andExpect(jsonPath("$.sucursalId").value(DEFAULT_SUCURSAL_ID.intValue()));
     }
 
     @Test
@@ -262,7 +262,6 @@ class AlumnoResourceIT {
         // Disconnect from session so that the updates on updatedAlumno are not directly saved in db
         em.detach(updatedAlumno);
         updatedAlumno
-            .uniqueId(UPDATED_UNIQUE_ID)
             .nombre(UPDATED_NOMBRE)
             .apellidos(UPDATED_APELLIDOS)
             .fechaNacimiento(UPDATED_FECHA_NACIMIENTO)
@@ -273,7 +272,8 @@ class AlumnoResourceIT {
             .contacto2(UPDATED_CONTACTO_2)
             .email(UPDATED_EMAIL)
             .activo(UPDATED_ACTIVO)
-            .inscrito(UPDATED_INSCRITO);
+            .inscrito(UPDATED_INSCRITO)
+            .sucursalId(UPDATED_SUCURSAL_ID);
 
         restAlumnoMockMvc
             .perform(
@@ -349,7 +349,7 @@ class AlumnoResourceIT {
         Alumno partialUpdatedAlumno = new Alumno();
         partialUpdatedAlumno.setId(alumno.getId());
 
-        partialUpdatedAlumno.padre(UPDATED_PADRE).contacto(UPDATED_CONTACTO);
+        partialUpdatedAlumno.contacto(UPDATED_CONTACTO).contacto2(UPDATED_CONTACTO_2);
 
         restAlumnoMockMvc
             .perform(
@@ -378,7 +378,6 @@ class AlumnoResourceIT {
         partialUpdatedAlumno.setId(alumno.getId());
 
         partialUpdatedAlumno
-            .uniqueId(UPDATED_UNIQUE_ID)
             .nombre(UPDATED_NOMBRE)
             .apellidos(UPDATED_APELLIDOS)
             .fechaNacimiento(UPDATED_FECHA_NACIMIENTO)
@@ -389,7 +388,8 @@ class AlumnoResourceIT {
             .contacto2(UPDATED_CONTACTO_2)
             .email(UPDATED_EMAIL)
             .activo(UPDATED_ACTIVO)
-            .inscrito(UPDATED_INSCRITO);
+            .inscrito(UPDATED_INSCRITO)
+            .sucursalId(UPDATED_SUCURSAL_ID);
 
         restAlumnoMockMvc
             .perform(

@@ -8,27 +8,27 @@ export const sampleWithRequiredData: IAlumno = {
 
 export const sampleWithPartialData: IAlumno = {
   id: 19512,
-  uniqueId: 11388,
-  apellidos: 'boo',
-  direccion: 'sharply alpha',
-  contacto: 'triumphantly phooey quietly',
-  contacto2: 'where acceptable',
+  nombre: 'wherever dereference',
+  fechaNacimiento: dayjs('2024-07-02'),
+  madre: 'alpha extremely spouse',
+  contacto2: 'quietly',
+  email: 'Rossie38@yahoo.com',
 };
 
 export const sampleWithFullData: IAlumno = {
-  id: 5429,
-  uniqueId: 5268,
-  nombre: 'via',
-  apellidos: 'ha uneven correctly',
+  id: 26090,
+  nombre: 'anti honey ugh',
+  apellidos: 'so',
   fechaNacimiento: dayjs('2024-07-02'),
-  direccion: 'strictly ample',
-  madre: 'weakly temporariness',
-  padre: 'fixed physical',
-  contacto: 'as',
-  contacto2: 'lightly via',
-  email: 'Matteo12@gmail.com',
-  activo: 17785,
-  inscrito: 21015,
+  direccion: 'correctly doss icky',
+  madre: 'velocity gladly',
+  padre: 'wretched',
+  contacto: 'opposite alphabetise',
+  contacto2: 'aside fooey',
+  email: 'Valentina76@yahoo.com',
+  activo: 28277,
+  inscrito: 3960,
+  sucursalId: 17785,
 };
 
 export const sampleWithNewData: NewAlumno = {

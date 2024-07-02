@@ -18,11 +18,11 @@ type MaestroFormDefaults = Pick<NewMaestro, 'id'>;
 
 type MaestroFormGroupContent = {
   id: FormControl<IMaestro['id'] | NewMaestro['id']>;
-  uniqueId: FormControl<IMaestro['uniqueId']>;
   nombre: FormControl<IMaestro['nombre']>;
   apellidos: FormControl<IMaestro['apellidos']>;
   contacto: FormControl<IMaestro['contacto']>;
   activo: FormControl<IMaestro['activo']>;
+  sucursalId: FormControl<IMaestro['sucursalId']>;
   sucursal: FormControl<IMaestro['sucursal']>;
 };
 
@@ -43,11 +43,11 @@ export class MaestroFormService {
           validators: [Validators.required],
         },
       ),
-      uniqueId: new FormControl(maestroRawValue.uniqueId),
       nombre: new FormControl(maestroRawValue.nombre),
       apellidos: new FormControl(maestroRawValue.apellidos),
       contacto: new FormControl(maestroRawValue.contacto),
       activo: new FormControl(maestroRawValue.activo),
+      sucursalId: new FormControl(maestroRawValue.sucursalId),
       sucursal: new FormControl(maestroRawValue.sucursal),
     });
   }

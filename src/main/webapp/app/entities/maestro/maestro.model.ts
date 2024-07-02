@@ -2,11 +2,11 @@ import { ISucursal } from 'app/entities/sucursal/sucursal.model';
 
 export interface IMaestro {
   id: number;
-  uniqueId?: number | null;
   nombre?: string | null;
   apellidos?: string | null;
   contacto?: string | null;
   activo?: number | null;
+  sucursalId?: number | null;
   sucursal?: ISucursal | null;
 }
 

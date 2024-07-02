@@ -24,9 +24,6 @@ public class Alumno implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "unique_id")
-    private Long uniqueId;
-
     @Column(name = "nombre")
     private String nombre;
 
@@ -60,6 +57,9 @@ public class Alumno implements Serializable {
     @Column(name = "inscrito")
     private Integer inscrito;
 
+    @Column(name = "sucursal_id")
+    private Long sucursalId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = { "alumnos", "maestros" }, allowSetters = true)
     private Sucursal sucursal;
@@ -77,19 +77,6 @@ public class Alumno implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Long getUniqueId() {
-        return this.uniqueId;
-    }
-
-    public Alumno uniqueId(Long uniqueId) {
-        this.setUniqueId(uniqueId);
-        return this;
-    }
-
-    public void setUniqueId(Long uniqueId) {
-        this.uniqueId = uniqueId;
     }
 
     public String getNombre() {
@@ -235,6 +222,19 @@ public class Alumno implements Serializable {
         this.inscrito = inscrito;
     }
 
+    public Long getSucursalId() {
+        return this.sucursalId;
+    }
+
+    public Alumno sucursalId(Long sucursalId) {
+        this.setSucursalId(sucursalId);
+        return this;
+    }
+
+    public void setSucursalId(Long sucursalId) {
+        this.sucursalId = sucursalId;
+    }
+
     public Sucursal getSucursal() {
         return this.sucursal;
     }
@@ -272,7 +272,6 @@ public class Alumno implements Serializable {
     public String toString() {
         return "Alumno{" +
             "id=" + getId() +
-            ", uniqueId=" + getUniqueId() +
             ", nombre='" + getNombre() + "'" +
             ", apellidos='" + getApellidos() + "'" +
             ", fechaNacimiento='" + getFechaNacimiento() + "'" +
@@ -284,6 +283,7 @@ public class Alumno implements Serializable {
             ", email='" + getEmail() + "'" +
             ", activo=" + getActivo() +
             ", inscrito=" + getInscrito() +
+            ", sucursalId=" + getSucursalId() +
             "}";
     }
 }

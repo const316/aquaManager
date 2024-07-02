@@ -1,0 +1,129 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-alumno-heading" data-cy="AlumnoCreateUpdateHeading" jhiTranslate="aquaManagerApp.alumno.home.createOrEditLabel">
+        Create or edit a Alumno
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="aquaManagerApp.alumno.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_uniqueId" jhiTranslate="aquaManagerApp.alumno.uniqueId">Unique Id</label>
+          <input type="number" class="form-control" name="uniqueId" id="field_uniqueId" data-cy="uniqueId" formControlName="uniqueId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="aquaManagerApp.alumno.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_apellidos" jhiTranslate="aquaManagerApp.alumno.apellidos">Apellidos</label>
+          <input type="text" class="form-control" name="apellidos" id="field_apellidos" data-cy="apellidos" formControlName="apellidos" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fechaNacimiento" jhiTranslate="aquaManagerApp.alumno.fechaNacimiento"
+            >Fecha Nacimiento</label
+          >
+          <div class="input-group">
+            <input
+              id="field_fechaNacimiento"
+              data-cy="fechaNacimiento"
+              type="text"
+              class="form-control"
+              name="fechaNacimiento"
+              ngbDatepicker
+              #fechaNacimientoDp="ngbDatepicker"
+              formControlName="fechaNacimiento"
+            />
+            <button type="button" class="btn btn-secondary" (click)="fechaNacimientoDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_direccion" jhiTranslate="aquaManagerApp.alumno.direccion">Direccion</label>
+          <input type="text" class="form-control" name="direccion" id="field_direccion" data-cy="direccion" formControlName="direccion" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_madre" jhiTranslate="aquaManagerApp.alumno.madre">Madre</label>
+          <input type="text" class="form-control" name="madre" id="field_madre" data-cy="madre" formControlName="madre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_padre" jhiTranslate="aquaManagerApp.alumno.padre">Padre</label>
+          <input type="text" class="form-control" name="padre" id="field_padre" data-cy="padre" formControlName="padre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contacto" jhiTranslate="aquaManagerApp.alumno.contacto">Contacto</label>
+          <input type="text" class="form-control" name="contacto" id="field_contacto" data-cy="contacto" formControlName="contacto" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contacto2" jhiTranslate="aquaManagerApp.alumno.contacto2">Contacto 2</label>
+          <input type="text" class="form-control" name="contacto2" id="field_contacto2" data-cy="contacto2" formControlName="contacto2" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_email" jhiTranslate="aquaManagerApp.alumno.email">Email</label>
+          <input type="text" class="form-control" name="email" id="field_email" data-cy="email" formControlName="email" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_activo" jhiTranslate="aquaManagerApp.alumno.activo">Activo</label>
+          <input type="number" class="form-control" name="activo" id="field_activo" data-cy="activo" formControlName="activo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_inscrito" jhiTranslate="aquaManagerApp.alumno.inscrito">Inscrito</label>
+          <input type="number" class="form-control" name="inscrito" id="field_inscrito" data-cy="inscrito" formControlName="inscrito" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sucursal" jhiTranslate="aquaManagerApp.alumno.sucursal">Sucursal</label>
+          <select
+            class="form-control"
+            id="field_sucursal"
+            data-cy="sucursal"
+            name="sucursal"
+            formControlName="sucursal"
+            [compareWith]="compareSucursal"
+          >
+            <option [ngValue]="null"></option>
+            @for (sucursalOption of sucursalsSharedCollection; track $index) {
+              <option [ngValue]="sucursalOption">{{ sucursalOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20240702181812"
+  },
+  "applications": ["aquaManager"],
+  "fields": [
+    {
+      "fieldName": "uniqueId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellidos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contacto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activo",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Maestro",
+  "relationships": [
+    {
+      "otherEntityName": "sucursal",
+      "otherEntityRelationshipName": "maestro",
+      "relationshipName": "sucursal",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

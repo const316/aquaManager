@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (alumno()) {
+      <div>
+        <h2 data-cy="alumnoDetailsHeading"><span jhiTranslate="aquaManagerApp.alumno.detail.title">Alumno</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ alumno()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.uniqueId">Unique Id</span></dt>
+          <dd>
+            <span>{{ alumno()!.uniqueId }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ alumno()!.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.apellidos">Apellidos</span></dt>
+          <dd>
+            <span>{{ alumno()!.apellidos }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.fechaNacimiento">Fecha Nacimiento</span></dt>
+          <dd>
+            <span>{{ alumno()!.fechaNacimiento | formatMediumDate }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.direccion">Direccion</span></dt>
+          <dd>
+            <span>{{ alumno()!.direccion }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.madre">Madre</span></dt>
+          <dd>
+            <span>{{ alumno()!.madre }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.padre">Padre</span></dt>
+          <dd>
+            <span>{{ alumno()!.padre }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.contacto">Contacto</span></dt>
+          <dd>
+            <span>{{ alumno()!.contacto }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.contacto2">Contacto 2</span></dt>
+          <dd>
+            <span>{{ alumno()!.contacto2 }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.email">Email</span></dt>
+          <dd>
+            <span>{{ alumno()!.email }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.activo">Activo</span></dt>
+          <dd>
+            <span>{{ alumno()!.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.inscrito">Inscrito</span></dt>
+          <dd>
+            <span>{{ alumno()!.inscrito }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.alumno.sucursal">Sucursal</span></dt>
+          <dd>
+            @if (alumno()!.sucursal) {
+              <div>
+                <a [routerLink]="['/sucursal', alumno()!.sucursal?.id, 'view']">{{ alumno()!.sucursal?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/alumno', alumno()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

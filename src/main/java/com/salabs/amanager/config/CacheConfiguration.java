@@ -50,6 +50,11 @@ public class CacheConfiguration {
             createCache(cm, com.salabs.amanager.domain.User.class.getName());
             createCache(cm, com.salabs.amanager.domain.Authority.class.getName());
             createCache(cm, com.salabs.amanager.domain.User.class.getName() + ".authorities");
+            createCache(cm, com.salabs.amanager.domain.Sucursal.class.getName());
+            createCache(cm, com.salabs.amanager.domain.Sucursal.class.getName() + ".alumnos");
+            createCache(cm, com.salabs.amanager.domain.Sucursal.class.getName() + ".maestros");
+            createCache(cm, com.salabs.amanager.domain.Alumno.class.getName());
+            createCache(cm, com.salabs.amanager.domain.Maestro.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

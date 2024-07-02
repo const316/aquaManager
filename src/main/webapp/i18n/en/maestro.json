@@ -1,0 +1,29 @@
+{
+  "aquaManagerApp": {
+    "maestro": {
+      "home": {
+        "title": "Maestros",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Maestro",
+        "createOrEditLabel": "Create or edit a Maestro",
+        "notFound": "No Maestros found"
+      },
+      "created": "A new Maestro is created with identifier {{ param }}",
+      "updated": "A Maestro is updated with identifier {{ param }}",
+      "deleted": "A Maestro is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Maestro {{ id }}?"
+      },
+      "detail": {
+        "title": "Maestro"
+      },
+      "id": "ID",
+      "uniqueId": "Unique Id",
+      "nombre": "Nombre",
+      "apellidos": "Apellidos",
+      "contacto": "Contacto",
+      "activo": "Activo",
+      "sucursal": "Sucursal"
+    }
+  }
+}

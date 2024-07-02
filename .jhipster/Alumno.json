@@ -1,0 +1,67 @@
+{
+  "annotations": {
+    "changelogDate": "20240702181811"
+  },
+  "applications": ["aquaManager"],
+  "fields": [
+    {
+      "fieldName": "uniqueId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "apellidos",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "fechaNacimiento",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "madre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "padre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contacto",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "contacto2",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "email",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "activo",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "inscrito",
+      "fieldType": "Integer"
+    }
+  ],
+  "name": "Alumno",
+  "relationships": [
+    {
+      "otherEntityName": "sucursal",
+      "otherEntityRelationshipName": "alumno",
+      "relationshipName": "sucursal",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

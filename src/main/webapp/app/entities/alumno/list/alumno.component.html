@@ -1,0 +1,187 @@
+<div>
+  <h2 id="page-heading" data-cy="AlumnoHeading">
+    <span jhiTranslate="aquaManagerApp.alumno.home.title">Alumnos</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="aquaManagerApp.alumno.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-alumno"
+        [routerLink]="['/alumno/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="aquaManagerApp.alumno.home.createLabel">Create a new Alumno</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (alumnos?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="aquaManagerApp.alumno.home.notFound">No Alumnos found</span>
+    </div>
+  }
+
+  @if (alumnos && alumnos.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="uniqueId">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.uniqueId">Unique Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombre">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.nombre">Nombre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="apellidos">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.apellidos">Apellidos</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fechaNacimiento">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.fechaNacimiento">Fecha Nacimiento</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="direccion">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.direccion">Direccion</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="madre">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.madre">Madre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="padre">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.padre">Padre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contacto">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.contacto">Contacto</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contacto2">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.contacto2">Contacto 2</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.email">Email</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activo">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.activo">Activo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="inscrito">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.inscrito">Inscrito</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sucursal.id">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.alumno.sucursal">Sucursal</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (alumno of alumnos; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/alumno', alumno.id, 'view']">{{ alumno.id }}</a>
+              </td>
+              <td>{{ alumno.uniqueId }}</td>
+              <td>{{ alumno.nombre }}</td>
+              <td>{{ alumno.apellidos }}</td>
+              <td>{{ alumno.fechaNacimiento | formatMediumDate }}</td>
+              <td>{{ alumno.direccion }}</td>
+              <td>{{ alumno.madre }}</td>
+              <td>{{ alumno.padre }}</td>
+              <td>{{ alumno.contacto }}</td>
+              <td>{{ alumno.contacto2 }}</td>
+              <td>{{ alumno.email }}</td>
+              <td>{{ alumno.activo }}</td>
+              <td>{{ alumno.inscrito }}</td>
+              <td>
+                @if (alumno.sucursal) {
+                  <div>
+                    <a [routerLink]="['/sucursal', alumno.sucursal.id, 'view']">{{ alumno.sucursal.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/alumno', alumno.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/alumno', alumno.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(alumno)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

@@ -15,12 +15,13 @@
     "enableHibernateCache": true,
     "enableSwaggerCodegen": false,
     "enableTranslation": true,
-    "entities": [],
+    "entities": ["Sucursal", "Alumno", "Maestro"],
     "gitCompany": "",
     "jhiPrefix": "jhi",
     "jhipsterVersion": "8.6.0",
     "jwtSecretKey": "OWJmMWY1ZmFhY2ZmMTM2MjExZGU0MDc3YmY4YzVmYTA1MTFiZjEwYmIxOGUxMjc0NzYyMmQ3MmYyY2M1ZGY1Nzk2YzQ4MDdhMGY0ZTc4OGFiZmZiY2Q3ZjRiY2IxZmIxNmJjYjU1M2EzY2EwMzg0OWE0ZWQwNDI5NmNjOThkYTI=",
     "languages": ["en"],
+    "lastLiquibaseTimestamp": 1719944292000,
     "messageBroker": false,
     "nativeLanguage": "en",
     "packageFolder": "com/salabs/amanager",
@@ -34,7 +35,35 @@
     "websocket": false,
     "withAdminUi": true
   },
-  "git-company": "const316",
-  "git-provider": "GitHub",
-  "repository-name": "aquaManager"
+  "git-company": {
+    "0": "c",
+    "1": "o",
+    "2": "n",
+    "3": "s",
+    "4": "t",
+    "5": "3",
+    "6": "1",
+    "7": "6"
+  },
+  "git-provider": {
+    "0": "G",
+    "1": "i",
+    "2": "t",
+    "3": "H",
+    "4": "u",
+    "5": "b"
+  },
+  "repository-name": {
+    "0": "a",
+    "1": "q",
+    "2": "u",
+    "3": "a",
+    "4": "M",
+    "5": "a",
+    "6": "n",
+    "7": "a",
+    "8": "g",
+    "9": "e",
+    "10": "r"
+  }
 }

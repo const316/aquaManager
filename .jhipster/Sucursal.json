@@ -1,0 +1,42 @@
+{
+  "annotations": {
+    "changelogDate": "20240702181810"
+  },
+  "applications": ["aquaManager"],
+  "fields": [
+    {
+      "fieldName": "uniqueId",
+      "fieldType": "Long"
+    },
+    {
+      "fieldName": "nombre",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "direccion",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "telefono",
+      "fieldType": "String"
+    }
+  ],
+  "name": "Sucursal",
+  "relationships": [
+    {
+      "otherEntityName": "alumno",
+      "otherEntityRelationshipName": "sucursal",
+      "relationshipName": "alumno",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "maestro",
+      "otherEntityRelationshipName": "sucursal",
+      "relationshipName": "maestro",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

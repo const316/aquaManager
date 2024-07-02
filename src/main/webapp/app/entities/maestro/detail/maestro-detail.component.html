@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (maestro()) {
+      <div>
+        <h2 data-cy="maestroDetailsHeading"><span jhiTranslate="aquaManagerApp.maestro.detail.title">Maestro</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ maestro()!.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.maestro.uniqueId">Unique Id</span></dt>
+          <dd>
+            <span>{{ maestro()!.uniqueId }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.maestro.nombre">Nombre</span></dt>
+          <dd>
+            <span>{{ maestro()!.nombre }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.maestro.apellidos">Apellidos</span></dt>
+          <dd>
+            <span>{{ maestro()!.apellidos }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.maestro.contacto">Contacto</span></dt>
+          <dd>
+            <span>{{ maestro()!.contacto }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.maestro.activo">Activo</span></dt>
+          <dd>
+            <span>{{ maestro()!.activo }}</span>
+          </dd>
+          <dt><span jhiTranslate="aquaManagerApp.maestro.sucursal">Sucursal</span></dt>
+          <dd>
+            @if (maestro()!.sucursal) {
+              <div>
+                <a [routerLink]="['/sucursal', maestro()!.sucursal?.id, 'view']">{{ maestro()!.sucursal?.id }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/maestro', maestro()!.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-maestro-heading" data-cy="MaestroCreateUpdateHeading" jhiTranslate="aquaManagerApp.maestro.home.createOrEditLabel">
+        Create or edit a Maestro
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="aquaManagerApp.maestro.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_uniqueId" jhiTranslate="aquaManagerApp.maestro.uniqueId">Unique Id</label>
+          <input type="number" class="form-control" name="uniqueId" id="field_uniqueId" data-cy="uniqueId" formControlName="uniqueId" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nombre" jhiTranslate="aquaManagerApp.maestro.nombre">Nombre</label>
+          <input type="text" class="form-control" name="nombre" id="field_nombre" data-cy="nombre" formControlName="nombre" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_apellidos" jhiTranslate="aquaManagerApp.maestro.apellidos">Apellidos</label>
+          <input type="text" class="form-control" name="apellidos" id="field_apellidos" data-cy="apellidos" formControlName="apellidos" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_contacto" jhiTranslate="aquaManagerApp.maestro.contacto">Contacto</label>
+          <input type="text" class="form-control" name="contacto" id="field_contacto" data-cy="contacto" formControlName="contacto" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_activo" jhiTranslate="aquaManagerApp.maestro.activo">Activo</label>
+          <input type="number" class="form-control" name="activo" id="field_activo" data-cy="activo" formControlName="activo" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sucursal" jhiTranslate="aquaManagerApp.maestro.sucursal">Sucursal</label>
+          <select
+            class="form-control"
+            id="field_sucursal"
+            data-cy="sucursal"
+            name="sucursal"
+            formControlName="sucursal"
+            [compareWith]="compareSucursal"
+          >
+            <option [ngValue]="null"></option>
+            @for (sucursalOption of sucursalsSharedCollection; track $index) {
+              <option [ngValue]="sucursalOption">{{ sucursalOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

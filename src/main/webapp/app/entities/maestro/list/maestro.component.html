@@ -1,0 +1,131 @@
+<div>
+  <h2 id="page-heading" data-cy="MaestroHeading">
+    <span jhiTranslate="aquaManagerApp.maestro.home.title">Maestros</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="aquaManagerApp.maestro.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-maestro"
+        [routerLink]="['/maestro/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="aquaManagerApp.maestro.home.createLabel">Create a new Maestro</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (maestros?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="aquaManagerApp.maestro.home.notFound">No Maestros found</span>
+    </div>
+  }
+
+  @if (maestros && maestros.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="uniqueId">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.maestro.uniqueId">Unique Id</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nombre">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.maestro.nombre">Nombre</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="apellidos">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.maestro.apellidos">Apellidos</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="contacto">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.maestro.contacto">Contacto</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="activo">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.maestro.activo">Activo</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sucursal.id">
+              <div class="d-flex">
+                <span jhiTranslate="aquaManagerApp.maestro.sucursal">Sucursal</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (maestro of maestros; track trackId) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/maestro', maestro.id, 'view']">{{ maestro.id }}</a>
+              </td>
+              <td>{{ maestro.uniqueId }}</td>
+              <td>{{ maestro.nombre }}</td>
+              <td>{{ maestro.apellidos }}</td>
+              <td>{{ maestro.contacto }}</td>
+              <td>{{ maestro.activo }}</td>
+              <td>
+                @if (maestro.sucursal) {
+                  <div>
+                    <a [routerLink]="['/sucursal', maestro.sucursal.id, 'view']">{{ maestro.sucursal.id }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/maestro', maestro.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/maestro', maestro.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(maestro)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

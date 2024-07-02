@@ -1,0 +1,36 @@
+{
+  "aquaManagerApp": {
+    "alumno": {
+      "home": {
+        "title": "Alumnos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Alumno",
+        "createOrEditLabel": "Create or edit a Alumno",
+        "notFound": "No Alumnos found"
+      },
+      "created": "A new Alumno is created with identifier {{ param }}",
+      "updated": "A Alumno is updated with identifier {{ param }}",
+      "deleted": "A Alumno is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Alumno {{ id }}?"
+      },
+      "detail": {
+        "title": "Alumno"
+      },
+      "id": "ID",
+      "uniqueId": "Unique Id",
+      "nombre": "Nombre",
+      "apellidos": "Apellidos",
+      "fechaNacimiento": "Fecha Nacimiento",
+      "direccion": "Direccion",
+      "madre": "Madre",
+      "padre": "Padre",
+      "contacto": "Contacto",
+      "contacto2": "Contacto 2",
+      "email": "Email",
+      "activo": "Activo",
+      "inscrito": "Inscrito",
+      "sucursal": "Sucursal"
+    }
+  }
+}

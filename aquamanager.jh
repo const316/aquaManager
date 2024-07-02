@@ -1,0 +1,48 @@
+
+application {
+  config {
+    baseName aquaManager
+    applicationType monolith
+    packageName com.salabs.amanager
+    authenticationType jwt
+    prodDatabaseType postgresql
+    clientFramework angularX
+  }
+  entities *
+}
+
+entity Sucursal{
+uniqueId Long
+nombre String
+direccion String
+telefono String
+}
+
+entity Alumno {
+uniqueId Long
+nombre String 
+apellidos String
+fechaNacimiento LocalDate
+direccion String 
+madre String
+padre String
+contacto String
+contacto2 String
+email String
+activo Integer
+inscrito Integer
+
+}
+
+entity Maestro {
+uniqueId Long
+nombre String
+apellidos String
+contacto String
+activo Integer
+}
+
+relationship OneToMany {
+  Sucursal to Alumno
+  Sucursal to Maestro
+}
